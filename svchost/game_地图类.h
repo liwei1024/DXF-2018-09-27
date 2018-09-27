@@ -15,5 +15,6 @@ public:
 	bool 是否已开门();
 	bool 是否BOSS房间();
 	bool 是否已通关();
+	std::vector<int> 取怪物列表();
 };
 
