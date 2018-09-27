@@ -21,10 +21,31 @@
     <ClInclude Include="base_Util.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="game_ProcessHack.h">
+    <ClInclude Include="base_内存读写.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="game_AnimalHack.h">
+    <ClInclude Include="game_怪物类.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="game_公共类.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="game_角色类.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="game_进程类.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="game_基址.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="game_物品类.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="game_地图类.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="game_Util.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>
@@ -38,10 +59,28 @@
     <ClCompile Include="base_Util.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="game_ProcessHack.cpp">
+    <ClCompile Include="base_内存读写.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="game_AnimalHack.cpp">
+    <ClCompile Include="game_怪物类.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="game_公共类.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="game_角色类.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="game_进程类.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="game_物品类.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="game_地图类.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="game_Util.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>

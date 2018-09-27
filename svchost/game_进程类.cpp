@@ -1,9 +1,9 @@
 #include "pch.h"
-#include "game_ProcessHack.h"
+#include "game_进程类.h"
 #include "base_Util.h"
 
 
-game_ProcessHack::game_ProcessHack(LPCWSTR lpClass, LPCWSTR lpName)
+game_进程类::game_进程类(LPCWSTR lpClass, LPCWSTR lpName)
 {
 	if (hWnd == NULL)
 	{
@@ -34,7 +34,7 @@ game_ProcessHack::game_ProcessHack(LPCWSTR lpClass, LPCWSTR lpName)
 }
 
 
-game_ProcessHack::~game_ProcessHack()
+game_进程类::~game_进程类()
 {
 	CloseHandle(hProcess);
 }

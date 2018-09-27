@@ -1,6 +1,6 @@
 #include "pch.h"
 #include "base_Util.h"
-
+#include <ctime>
 using namespace std;
 
 HWND s_hwnd = NULL;
@@ -184,4 +184,134 @@ bool EnableDebugPrivilege(bool bEnable)
 		CloseHandle(hToken);
 	}
 	return fOK;
+}
+
+int createRandom(int min, int max)
+{
+	int 随机数 = 0;
+	if (max > min) {
+		srand((unsigned)time(NULL));
+		随机数 = (rand() % (min - max + 1) + max);
+	}
+	else {
+		srand((unsigned)time(NULL));
+		随机数 = (rand() % (max - min + 1) + min);
+	}
+	return 随机数;
+}
+
+char* unicodeToAnsi(const wchar_t * wstr)
+{
+	if (!wstr)
+		return NULL;
+	INT strlen = ::WideCharToMultiByte(CP_ACP, NULL, wstr, wcslen(wstr), NULL, 0, NULL, FALSE);
+	char* str = new char[strlen + 1];
+	::WideCharToMultiByte(CP_ACP, NULL, wstr, wcslen(wstr), str, strlen, NULL, FALSE);
+	str[strlen] = '\0';
+	return str;
+}
+
+// 获取时间戳
+INT getTime()
+{
+	DWORD t_start, t_end;
+	t_start = GetTickCount();//从操作系统启动所经过（elapsed）的毫秒数，它的返回值是DWORD。
+	Sleep(3000);
+	t_end = GetTickCount();
+	return  t_end - t_start;
+}
+
+POINT getMouseCoord()
+{
+	POINT Coord;
+	if (GetCursorPos(&Coord)) {
+		printf("getMouseCoord Erro!\n");
+	}
+	return Coord;
+}
+
+BOOL setMouseCoord(INT x, INT y)
+{
+	BOOL result;
+	result = SetCursorPos(x, y);
+	if (result == FALSE) {
+		printf("setMouseCoord Erro!\n");
+	}
+	return result;
+}
+
+VOID mouseClick(INT s)
+{
+	mouse_event(MOUSEEVENTF_LEFTDOWN, 0, 0, 0, 0);
+	Sleep(s + createRandom(0, 10));
+	mouse_event(MOUSEEVENTF_LEFTUP, 0, 0, 0, 0);
+	Sleep(50 + createRandom(0, 10));
+}
+
+VOID mouseDoubleClick(INT s)
+{
+	mouse_event(MOUSEEVENTF_LEFTDOWN, 0, 0, 0, 0);
+	Sleep(s + createRandom(0, 10));
+	mouse_event(MOUSEEVENTF_LEFTUP, 0, 0, 0, 0);
+	Sleep(50 + createRandom(0, 10));
+	mouse_event(MOUSEEVENTF_LEFTDOWN, 0, 0, 0, 0);
+	Sleep(s + createRandom(0, 10));
+	mouse_event(MOUSEEVENTF_LEFTUP, 0, 0, 0, 0);
+	Sleep(50 + createRandom(0, 10));
+}
+
+BOOL getKeyStatus(INT keyCode)
+{
+	if (GetKeyState(keyCode) < 0) {
+		return TRUE;
+	}
+	return FALSE;
+}
+
+INT getSCan(INT keyCode)
+{
+	INT sCan = MapVirtualKey(keyCode, 0);
+	if (
+		keyCode == VK_LEFT ||
+		keyCode == VK_RIGHT ||
+		keyCode == VK_DOWN ||
+		keyCode == VK_UP
+		)
+	{
+		sCan += 0x80;
+	}
+	return sCan;
+}
+
+VOID keyDown(INT keyCode)
+{
+	if (getKeyStatus(keyCode) == FALSE) {
+		keybd_event(keyCode, getSCan(keyCode), 0, 0);
+	}
+}
+
+VOID keyUp(INT keyCode)
+{
+	if (getKeyStatus(keyCode) == TRUE) {
+		keybd_event(keyCode, getSCan(keyCode), KEYEVENTF_KEYUP, 0);
+	}
+}
+
+VOID doKeyPress(INT keyCode, INT s)
+{
+	keyDown(keyCode);
+	Sleep(s + createRandom(0, 10));
+	keyUp(keyCode);
+	Sleep(50 + createRandom(0, 10));
+}
+
+bool 远程CALL(int CALL_Address, bool async)
+{
+	if (async)
+	{
+		return SendMessage(_game_进程类.hWnd, 10024, CALL_Address, 0);
+	}
+	else {
+		return PostMessage(_game_进程类.hWnd, 10024, CALL_Address, 0);
+	}
 }
