@@ -159,6 +159,7 @@
     <ClInclude Include="game_地图类.h" />
     <ClInclude Include="game_基址.h" />
     <ClInclude Include="game_公共类.h" />
+    <ClInclude Include="game_寻路.h" />
     <ClInclude Include="game_怪物类.h" />
     <ClInclude Include="game_物品类.h" />
     <ClInclude Include="game_进程类.h" />
@@ -173,6 +174,7 @@
     <ClCompile Include="game_公共类.cpp" />
     <ClCompile Include="game_Util.cpp" />
     <ClCompile Include="game_地图类.cpp" />
+    <ClCompile Include="game_寻路.cpp" />
     <ClCompile Include="game_怪物类.cpp" />
     <ClCompile Include="game_物品类.cpp" />
     <ClCompile Include="game_进程类.cpp" />

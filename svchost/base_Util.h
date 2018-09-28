@@ -23,8 +23,13 @@ bool EnableDebugPrivilege(bool bEnable);
 int createRandom(int min, int max);
 char * unicodeToAnsi(const wchar_t * wstr);
 INT getTime();
+VOID keyDown(INT keyCode);
+VOID keyUp(INT keyCode);
+VOID doKeyPress(INT keyCode, INT s);
 bool Ô¶³ÌCALL(int CALL_Address, bool async = true);
 
 std::string PosToString(Pos pos);
+
+DWORD GetSystemTime();
 
 

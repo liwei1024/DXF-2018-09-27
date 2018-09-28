@@ -325,6 +325,13 @@ std::string PosToString(Pos pos)
 }
 
 
+DWORD GetSystemTime()
+{
+	time_t tt = time(NULL);
+	return (DWORD)tt;
+}
+
+
 
 
 

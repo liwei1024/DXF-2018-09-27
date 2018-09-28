@@ -54,6 +54,9 @@
     <ClInclude Include="base_消息.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="game_寻路.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">
@@ -90,6 +93,9 @@
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="base_消息.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="game_寻路.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
