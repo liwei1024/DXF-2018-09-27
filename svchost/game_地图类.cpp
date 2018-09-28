@@ -1,11 +1,15 @@
 #include "pch.h"
 #include "game_地图类.h"
 #include "game_Util.h"
+#include "base_内存读写.h"
 
 using namespace std;
 
 game_地图类::game_地图类(DWORD dwObjectPointer)
 {
+	首地址 = readInteger(readInteger(readInteger(__人物基址) + __地图偏移) + __首地址);
+	尾地址 = readInteger(readInteger(readInteger(__人物基址) + __地图偏移) + __尾地址);
+	怪物数量 = (尾地址 - 首地址) / 4;
 }
 
 

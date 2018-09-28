@@ -163,6 +163,7 @@
     <ClInclude Include="game_进程类.h" />
     <ClInclude Include="game_角色类.h" />
     <ClInclude Include="pch.h" />
+    <ClInclude Include="struct.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="base_Util.cpp" />

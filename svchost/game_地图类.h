@@ -7,6 +7,7 @@ struct 宽高
 class game_地图类
 {
 public:
+	int 首地址, 尾地址, 怪物数量 = NULL;
 	game_地图类(DWORD dwObjectPointer = NULL);
 	~game_地图类();
 	const char * GetName();

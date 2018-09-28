@@ -31,11 +31,26 @@ game_进程类::game_进程类(LPCWSTR lpClass, LPCWSTR lpName)
 			throw FormatString("打开失败 Error Code - < %d >", GetLastError());
 		}
 	}
+	绿色打印("hWnd			< %d >", hWnd);
+	红色打印("hProcess		< %d >", hProcess);
+	黄色打印("ProcessId		< %d >", ProcessId);
 }
 
 
 game_进程类::~game_进程类()
 {
+	红色打印("hProcess		< %d >", hProcess);
 	CloseHandle(hProcess);
+	OutputDebugString(L"exit");
+	system("pause");
+}
+
+ProcessInfo game_进程类::Run()
+{
+	ProcessInfo _ProcessInfo;
+	_ProcessInfo.hWnd = hWnd;
+	_ProcessInfo.ProcessId = ProcessId;
+	_ProcessInfo.hProcess = hProcess;
+	return _ProcessInfo;
 }
 

@@ -72,3 +72,18 @@ int 取游戏状态()
 {
 	return readInteger(__游戏状态);
 }
+
+int 取角色等级()
+{
+	int Retn = readInteger(__角色等级);
+	return Retn;
+}
+
+int  取疲劳值()
+{
+	int 返回值;
+	int 最小 = 解密(__当前疲劳);
+	int 最大 = 解密(__最大疲劳);
+	返回值 = 最大 - 最小;
+	return 返回值;
+}

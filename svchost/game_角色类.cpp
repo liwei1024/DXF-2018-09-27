@@ -4,9 +4,11 @@
 #include "game_Util.h"
 
 
-game_角色类::game_角色类(DWORD dwObjectPointer):game_公共类(dwObjectPointer)
+game_角色类::game_角色类():game_公共类(object_pointer)
 {
 
+	object_pointer = readInteger(__人物基址);
+	//printf("123\n");
 }
 
 
@@ -25,18 +27,5 @@ Pos game_角色类::GetPos()
 	return _Pos;
 }
 
-int game_角色类::取角色等级()
-{
-	int Retn = readInteger(__角色等级);
-	return Retn;
-}
 
-int  game_角色类::取疲劳值()
-{
-	int 返回值;
-	int 最小 = 解密(__当前疲劳);
-	int 最大 = 解密(__最大疲劳);
-	返回值 = 最大 - 最小;
-	return 返回值;
-}
 
