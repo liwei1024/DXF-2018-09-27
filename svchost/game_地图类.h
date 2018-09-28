@@ -7,7 +7,7 @@ struct 宽高
 class game_地图类
 {
 public:
-	int 首地址, 尾地址, 怪物数量 = NULL;
+	DWORD 首地址, 尾地址, 数量 = NULL;
 	game_地图类(DWORD dwObjectPointer = NULL);
 	~game_地图类();
 	const char * GetName();
@@ -16,6 +16,8 @@ public:
 	bool 是否已开门();
 	bool 是否BOSS房间();
 	bool 是否已通关();
-	std::vector<int> 取怪物列表();
+	void 遍历();
+	std::vector<DWORD> 取怪物列表();
+	bool 是否有怪物();
 };
 

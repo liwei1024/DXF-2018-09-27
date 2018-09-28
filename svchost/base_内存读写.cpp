@@ -8,7 +8,7 @@ BOOL readMemory(INT baseAddress, LPVOID lpBuffer, INT nSize)
 {
 	SIZE_T lpNumberOfBytesRead;
 	//ntReadVirtualMemory(_ProcessInfo.hProcess, (LPCVOID)baseAddress, lpBuffer, (SIZE_T)nSize, &lpNumberOfBytesRead);
-	ReadProcessMemory(_game_进程类.hProcess, (LPCVOID)baseAddress, lpBuffer, (SIZE_T)nSize, &lpNumberOfBytesRead);
+	ReadProcessMemory(_ProcessInfo.hProcess, (LPCVOID)baseAddress, lpBuffer, (SIZE_T)nSize, &lpNumberOfBytesRead);
 	/*if ( == FALSE) {
 		printf("读取 %x 内存时失败！\n", baseAddress);
 		system("pause");
@@ -95,7 +95,7 @@ CHAR* readString(INT lpBaseAddress, INT len)
 BOOL writeMemory(INT lpBaseAddress, LPCVOID lpBuffer, INT nSize)
 {
 	SIZE_T lpNumberOfBytesRead;
-	if (!WriteProcessMemory(_game_进程类.hProcess, (LPVOID)lpBaseAddress, lpBuffer, (SIZE_T)(nSize), &lpNumberOfBytesRead)) {
+	if (!WriteProcessMemory(_ProcessInfo.hProcess, (LPVOID)lpBaseAddress, lpBuffer, (SIZE_T)(nSize), &lpNumberOfBytesRead)) {
 		printf("写入 %x 内存时失败！\n", lpBaseAddress);
 		return false;
 	}

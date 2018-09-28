@@ -1,14 +1,15 @@
 #pragma once
-struct Pos
-{
-	int x = 0;
-	int y = 0;
-	int z = 0;
-};
+
 class game_公共类
 {
 public:
 	DWORD object_pointer = NULL;
+	Pos pos;
+	const char * name;
+	DWORD HP;
+	DWORD code;
+	DWORD camp;
+	DWORD type;
 	game_公共类(DWORD dwObjectPointer = NULL);
 	~game_公共类();
 	Pos GetPos();
@@ -16,5 +17,6 @@ public:
 	DWORD GetCode();
 	DWORD GetCamp();
 	DWORD GetHP();
+	DWORD GetType();
 };
 

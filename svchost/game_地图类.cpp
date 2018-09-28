@@ -2,6 +2,9 @@
 #include "game_地图类.h"
 #include "game_Util.h"
 #include "base_内存读写.h"
+#include "game_怪物类.h"
+#include "game_物品类.h"
+#include "base_Util.h"
 
 using namespace std;
 
@@ -9,7 +12,7 @@ game_地图类::game_地图类(DWORD dwObjectPointer)
 {
 	首地址 = readInteger(readInteger(readInteger(__人物基址) + __地图偏移) + __首地址);
 	尾地址 = readInteger(readInteger(readInteger(__人物基址) + __地图偏移) + __尾地址);
-	怪物数量 = (尾地址 - 首地址) / 4;
+	数量 = (尾地址 - 首地址) / 4;
 }
 
 
@@ -47,7 +50,61 @@ bool game_地图类::是否已通关()
 
 }
 
-vector<int> game_地图类::取怪物列表()
+void game_地图类::遍历()
 {
-
+	DWORD object_pointer;
+	string str;
+	for (size_t i = 数量; i >= 0; i--)
+	{
+		object_pointer = readInteger(首地址 + 4 * i);
+		game_怪物类 _game_怪物类(object_pointer);
+		str += "地址:" + IntToHex(object_pointer);
+		str += "代码:" + IntToHex(_game_怪物类.code);
+		str += "阵营:" + IntToHex(_game_怪物类.camp);
+		str += "血量:" + IntToHex(_game_怪物类.HP);
+		str += "位置:" + PosToString(_game_怪物类.pos);
+		str += "\n";
+		青色打印("%s", str.c_str());
+	}
 }
+
+vector<DWORD> game_地图类::取怪物列表()
+{
+	vector<DWORD> 怪物列表;
+	DWORD object_pointer;
+	for (size_t i = 数量; i >= 0; i--)
+	{
+		object_pointer = readInteger(首地址 + 4 * i);
+		game_怪物类 _game_怪物类(object_pointer);
+		if (_game_怪物类.HP > 0 || _game_怪物类.camp > 0)
+		{
+			if (_game_怪物类.type == 529 || _game_怪物类.type == 273 || _game_怪物类.type == 545)
+			{
+				怪物列表.insert(怪物列表.end(), object_pointer);
+			}
+		}
+	}
+	return 怪物列表;
+}
+
+bool game_地图类::是否有怪物()
+{
+	DWORD object_pointer;
+	for (size_t i = 数量; i >= 0; i--)
+	{
+		object_pointer = readInteger(首地址 + 4 * i);
+		game_怪物类 _game_怪物类(object_pointer);
+		if (_game_怪物类.camp > 0)
+		{
+			if (_game_怪物类.type == 529 || _game_怪物类.type == 273 || _game_怪物类.type == 545)
+			{
+				if (_game_怪物类.HP > 0 || _game_怪物类.code == 8104 || _game_怪物类.code == 817)
+				{
+					return true;
+				}
+			}
+		}
+	}
+	return false;
+}
+

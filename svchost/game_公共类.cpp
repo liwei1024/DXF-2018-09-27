@@ -6,6 +6,12 @@
 game_公共类::game_公共类(DWORD dwObjectPointer)
 {
 	object_pointer = dwObjectPointer;
+	pos = GetPos();
+	name = GetName();
+	code = GetCode();
+	camp = GetCamp();
+	HP = GetHP();
+	type = GetType();
 }
 
 
@@ -54,4 +60,12 @@ DWORD game_公共类::GetHP()
 	DWORD HP = NULL;
 	HP = readInteger(object_pointer + __血量偏移);
 	return HP;
+}
+
+// 获取类型
+DWORD game_公共类::GetType()
+{
+	DWORD type = NULL;
+	type = readInteger(object_pointer + __类型偏移);
+	return type;
 }

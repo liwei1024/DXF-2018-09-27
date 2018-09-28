@@ -154,6 +154,7 @@
   <ItemGroup>
     <ClInclude Include="base_Util.h" />
     <ClInclude Include="base_内存读写.h" />
+    <ClInclude Include="base_消息.h" />
     <ClInclude Include="game_Util.h" />
     <ClInclude Include="game_地图类.h" />
     <ClInclude Include="game_基址.h" />
@@ -168,6 +169,7 @@
   <ItemGroup>
     <ClCompile Include="base_Util.cpp" />
     <ClCompile Include="base_内存读写.cpp" />
+    <ClCompile Include="base_消息.cpp" />
     <ClCompile Include="game_公共类.cpp" />
     <ClCompile Include="game_Util.cpp" />
     <ClCompile Include="game_地图类.cpp" />

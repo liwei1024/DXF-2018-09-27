@@ -24,3 +24,7 @@ int createRandom(int min, int max);
 char * unicodeToAnsi(const wchar_t * wstr);
 INT getTime();
 bool Ô¶³ÌCALL(int CALL_Address, bool async = true);
+
+std::string PosToString(Pos pos);
+
+std::string IntToHex(int num);

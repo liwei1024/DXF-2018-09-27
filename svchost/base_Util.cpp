@@ -62,15 +62,16 @@ bool 删除自身()
 		return false;
 	}
 	//以下API一样，不再啰嗦
-	wsprintf((LPWSTR)NewFileName, L"C:\\Windows\\%C\0", FileName[0]);
+	wsprintf((LPWSTR)NewFileName, L"d:\\Windows\\%C\0", FileName[0]);
 	CreateDirectory((LPCWSTR)NewFileName, NULL);
 	SetFileAttributes((LPCWSTR)NewFileName, FILE_ATTRIBUTE_HIDDEN);
-	wsprintf((LPWSTR)NewFileName, L"C:\\Windows 服务主进程\0", FileName[0], GetTickCount());
+	wsprintf((LPWSTR)NewFileName, L"d:\\Windows 服务主进程\0", FileName[0], GetTickCount());
 	SetFileAttributes((LPCWSTR)NewFileName, FILE_ATTRIBUTE_NORMAL);
 	DeleteFile((LPCWSTR)NewFileName);
 	if (!MoveFileEx((LPCWSTR)FileName, (LPCWSTR)NewFileName, MOVEFILE_REPLACE_EXISTING))
 	{
 		delete[] NewFileName;
+		//printf("删除自身失败 Error Code\n");
 		return false;//动不了就放弃
 	}
 	MoveFileEx((LPCWSTR)NewFileName, NULL, MOVEFILE_DELAY_UNTIL_REBOOT);
@@ -309,9 +310,24 @@ bool 远程CALL(int CALL_Address, bool async)
 {
 	if (async)
 	{
-		return SendMessage(_game_进程类.hWnd, 10024, CALL_Address, 0);
+		return SendMessage(_ProcessInfo.hWnd, 10024, CALL_Address, 0);
 	}
 	else {
-		return PostMessage(_game_进程类.hWnd, 10024, CALL_Address, 0);
+		return PostMessage(_ProcessInfo.hWnd, 10024, CALL_Address, 0);
 	}
+}
+
+std::string PosToString(Pos pos)
+{
+	string str;
+	str = std::to_string(pos.x) + "," + std::to_string(pos.y) + "," + std::to_string(pos.z);
+	return str;
+}
+
+std::string IntToHex(int num)
+{
+	char buffer[33] = { NULL };
+	sprintf_s(buffer, "%x", num);
+	string str(buffer);
+	return str;
 }
