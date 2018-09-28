@@ -8,7 +8,7 @@ class game_地图类
 {
 public:
 	DWORD 首地址, 尾地址, 数量 = NULL;
-	game_地图类(DWORD dwObjectPointer = NULL);
+	game_地图类();
 	~game_地图类();
 	const char * GetName();
 	std::vector<int> 地图通道();

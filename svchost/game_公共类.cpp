@@ -6,12 +6,13 @@
 game_公共类::game_公共类(DWORD dwObjectPointer)
 {
 	object_pointer = dwObjectPointer;
+	type = GetType();
 	pos = GetPos();
 	name = GetName();
 	code = GetCode();
 	camp = GetCamp();
 	HP = GetHP();
-	type = GetType();
+	
 }
 
 

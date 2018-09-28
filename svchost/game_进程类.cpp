@@ -39,10 +39,10 @@ game_进程类::game_进程类(LPCWSTR lpClass, LPCWSTR lpName)
 
 game_进程类::~game_进程类()
 {
-	红色打印("hProcess		< %d >", hProcess);
+	/*红色打印("hProcess		< %d >", hProcess);
 	CloseHandle(hProcess);
 	OutputDebugString(L"exit");
-	system("pause");
+	system("pause");*/
 }
 
 ProcessInfo game_进程类::Run()
