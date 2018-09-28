@@ -324,19 +324,7 @@ std::string PosToString(Pos pos)
 	return str;
 }
 
-std::string IntToHex(int num)
-{
-	char buffer[33] = { NULL };
-	sprintf_s(buffer, "%x", num);
-	string str(buffer);
-	return str;
-}
 
-std::string ConstCharToString(const char * c_str)
-{
-	std::string str(c_str);
-	return str;
-}
 
 
 

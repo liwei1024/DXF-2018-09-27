@@ -24,10 +24,21 @@ game_公共类::~game_公共类()
 Pos game_公共类::GetPos()
 {
 	Pos _Pos;
-	DWORD pos_pointer = readInteger(readInteger(__人物基址) + __坐标偏移);
-	_Pos.x = (int)readFloat(pos_pointer + 0x10);
-	_Pos.y = (int)readFloat(pos_pointer + 0x14);
-	_Pos.z = (int)readFloat(pos_pointer + 0x18);
+	DWORD pos_pointer;
+	if (type == 273)
+	{
+		pos_pointer = readInteger(readInteger(__人物基址) + __人物坐标偏移);
+		_Pos.x = (int)readFloat(pos_pointer + 0x10);
+		_Pos.y = (int)readFloat(pos_pointer + 0x14);
+		_Pos.z = (int)readFloat(pos_pointer + 0x18);
+	}
+	else {
+		pos_pointer = readInteger(readInteger(__人物基址) + __坐标偏移);
+		_Pos.x = (int)readFloat(pos_pointer + 0);
+		_Pos.y = (int)readFloat(pos_pointer + 4);
+		_Pos.z = (int)readFloat(pos_pointer + 8);
+	}
+	
 	return _Pos;
 }
 

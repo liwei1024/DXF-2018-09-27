@@ -27,6 +27,4 @@ bool Ô¶³ÌCALL(int CALL_Address, bool async = true);
 
 std::string PosToString(Pos pos);
 
-std::string IntToHex(int num);
 
-std::string ConstCharToString(const char * c_str);

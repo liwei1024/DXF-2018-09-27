@@ -59,13 +59,13 @@ void game_地图类::遍历()
 	{
 		object_pointer = readInteger(首地址 + 4 * i);
 		game_怪物类 _game_怪物类(object_pointer);
-		str += "地址:" + IntToHex(object_pointer);
-		str += "\t代码:" + to_string(_game_怪物类.code);
-		str += "\t类型:" + to_string(_game_怪物类.type);
-		str += "\t阵营:" + to_string(_game_怪物类.camp);
-		str += "\t血量:" + to_string(_game_怪物类.HP);
+		str += "地址:" + FormatString("0x%8x", object_pointer);
+		str += "\t代码:" + FormatString("%8d", _game_怪物类.code); 
+		str += "\t类型:" + FormatString("%8d", _game_怪物类.type);
+		str += "\t阵营:" + FormatString("%8d", _game_怪物类.camp);
+		str += "\t血量:" + FormatString("%16d", _game_怪物类.HP);
 		str += "\t位置:" + PosToString(_game_怪物类.pos);
-		str += "\t名称:" + ConstCharToString(_game_怪物类.name);
+		str += "\t名称:" + FormatString("%s",_game_怪物类.name);
 		str += "\n";
 		青色打印("%s", str.c_str());
 		str.clear();
